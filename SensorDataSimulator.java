@@ -55,12 +55,12 @@ public class Main {
             return null;
         }
     }
-
-    // SensorDataSimulator for simulating real-time sensor data
+ // SensorDataSimulator for simulating real-time sensor data
     public static class SensorDataSimulator {
         private final DoubleProperty temperature = new SimpleDoubleProperty();
         private final DoubleProperty humidity = new SimpleDoubleProperty();
         private final DoubleProperty motionDetected = new SimpleDoubleProperty();
+        private final DoubleProperty lighting = new SimpleDoubleProperty();
 
         public SensorDataSimulator() {
             Timer timer = new Timer();
@@ -69,8 +69,9 @@ public class Main {
                 public void run() {
                     Platform.runLater(() -> {
                         temperature.set(Math.random() * 40); // Temperature: 0-40°C
-                        humidity.set(Math.random() * 100); // Humidity: 0-100%
+                        humidity.set(Math.random() * 100);   // Humidity: 0-100%
                         motionDetected.set(Math.random() < 0.1 ? 1 : 0); // 10% chance of motion
+                        lighting.set(Math.random() * 100);   // Lighting: 0-100%
                     });
                 }
             }, 0, 1000); // Update every second
@@ -79,6 +80,7 @@ public class Main {
         public DoubleProperty temperatureProperty() { return temperature; }
         public DoubleProperty humidityProperty() { return humidity; }
         public DoubleProperty motionDetectedProperty() { return motionDetected; }
+        public DoubleProperty lightingProperty() { return lighting; }
     }
 
     public static void main(String[] args) {
@@ -113,6 +115,9 @@ public class Main {
         sensorSimulator.motionDetectedProperty().addListener((obs, oldMotion, newMotion) -> {
             System.out.println("Motion detected: " + (newMotion.intValue() == 1 ? "Yes" : "No"));
         });
+        sensorSimulator.lightingProperty().addListener((obs, oldLighting, newLighting) -> {
+            System.out.println("Lighting updated: " + newLighting);
+        });
 
         // Keep the program running until user presses Enter
         System.out.println("Press Enter to stop the simulation...");
@@ -121,3 +126,4 @@ public class Main {
     }
 }
 
+   
