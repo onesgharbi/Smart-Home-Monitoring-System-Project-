@@ -3,58 +3,6 @@
 
 package com.smarthome;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
-import javafx.application.Platform;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-
-public class Main {
-
-    // Enum representing user roles in the system
-    public enum UserRole {
-        HOMEOWNER, SECURITY_GUARD, TECHNICIAN
-    }
-
-    // Class representing a user
-    public static class User {
-        private String username;
-        private String password;
-        private UserRole role;
-
-        public User(String username, String password, UserRole role) {
-            this.username = username;
-            this.password = password;
-            this.role = role;
-        }
-
-        public String getUsername() { return username; }
-        public String getPassword() { return password; }
-        public UserRole getRole() { return role; }
-    }
-
-    // LoginManager for handling user authentication
-    public static class LoginManager {
-        // Predefined users
-        private static final Map<String, User> users = new HashMap<>();
-
-        static {
-            users.put("homeowner", new User("homeowner", "password123", UserRole.HOMEOWNER));
-            users.put("guard", new User("guard", "password123", UserRole.SECURITY_GUARD));
-            users.put("tech", new User("tech", "password123", UserRole.TECHNICIAN));
-        }
-
-        public static User authenticate(String username, String password) {
-            User user = users.get(username);
-            if (user != null && user.getPassword().equals(password)) {
-                return user;
-            }
-            return null;
-        }
-    }
  // SensorDataSimulator for simulating real-time sensor data
     public static class SensorDataSimulator {
         private final DoubleProperty temperature = new SimpleDoubleProperty();
