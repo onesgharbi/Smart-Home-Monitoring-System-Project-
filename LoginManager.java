@@ -10,14 +10,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Manages user authentication for the Smart Home Monitoring System.
- * Verifies username and password and returns a User object if authentication is successful.
+ * Manages user authentication and access control for the Smart Home Monitoring System.
  */
 public class LoginManager {
-    // Predefined users for the system
     private static final Map<String, User> users = new HashMap<>();
 
-    // Static block to initialize sample users
     static {
         users.put("homeowner", new User("homeowner", "password123", UserRole.HOMEOWNER));
         users.put("guard", new User("guard", "password123", UserRole.SECURITY_GUARD));
@@ -25,10 +22,10 @@ public class LoginManager {
     }
 
     /**
-     * Authenticates the user by verifying username and password.
-     * @param username The username provided by the user.
-     * @param password The password provided by the user.
-     * @return User object if authentication is successful; otherwise, null.
+     * Authenticates a user based on their username and password.
+     * @param username The username entered by the user.
+     * @param password The password entered by the user.
+     * @return A User object if authentication is successful; null otherwise.
      */
     public static User authenticate(String username, String password) {
         User user = users.get(username);
@@ -39,8 +36,32 @@ public class LoginManager {
     }
 
     /**
-     * Main method to run the authentication process from the console.
+     * Checks if the user has permission to access homeowner functions.
+     * @param user The authenticated user.
+     * @return True if the user has access; otherwise, false.
      */
+    public static boolean accessHomeownerArea(User user) {
+        return user.getRole() == UserRole.HOMEOWNER;
+    }
+
+    /**
+     * Checks if the user has permission to access security functions.
+     * @param user The authenticated user.
+     * @return True if the user has access; otherwise, false.
+     */
+    public static boolean accessSecurityArea(User user) {
+        return user.getRole() == UserRole.SECURITY_GUARD || user.getRole() == UserRole.HOMEOWNER;
+    }
+
+    /**
+     * Checks if the user has permission to access technician functions.
+     * @param user The authenticated user.
+     * @return True if the user has access; otherwise, false.
+     */
+    public static boolean accessTechnicianArea(User user) {
+        return user.getRole() == UserRole.TECHNICIAN || user.getRole() == UserRole.HOMEOWNER;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -50,12 +71,29 @@ public class LoginManager {
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
-        // Attempt to authenticate the user
         User user = authenticate(username, password);
 
-        // Output result of the authentication
         if (user != null) {
             System.out.println("Login successful for role: " + user.getRole());
+
+            // Check access levels based on user role
+            if (accessHomeownerArea(user)) {
+                System.out.println("Access granted to Homeowner area.");
+            } else {
+                System.out.println("Access denied to Homeowner area.");
+            }
+
+            if (accessSecurityArea(user)) {
+                System.out.println("Access granted to Security area.");
+            } else {
+                System.out.println("Access denied to Security area.");
+            }
+
+            if (accessTechnicianArea(user)) {
+                System.out.println("Access granted to Technician area.");
+            } else {
+                System.out.println("Access denied to Technician area.");
+            }
         } else {
             System.out.println("Login failed. Please check your credentials.");
         }
@@ -63,4 +101,5 @@ public class LoginManager {
         scanner.close();
     }
 }
+
 
