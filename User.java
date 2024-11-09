@@ -3,10 +3,13 @@
 
 package com.smarthome.users;
 
+/**
+ * Class representing a user with a username, password, and role.
+ */
 public class User {
-    private final String username;
-    private final String password;
-    private final UserRole role;
+    private String username;
+    private String password;
+    private UserRole role;
 
     public User(String username, String password, UserRole role) {
         this.username = username;
@@ -26,4 +29,3 @@ public class User {
         return role;
     }
 }
-
