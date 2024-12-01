@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f4e9e2;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
+
+    <!-- Form Section -->
+    <GridPane alignment="CENTER" hgap="10" layoutX="400.0" layoutY="50.0" prefHeight="520.0" prefWidth="360.0" style="-fx-background-color: #ffffff; -fx-padding: 30; -fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #ddd;" vgap="15">
+
+        <!-- Title -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Get Started Now" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
+
+        <!-- Name Field -->
+        <Label style="-fx-font-size: 14px;" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField promptText="Enter your name" style="-fx-padding: 10; -fx-background-radius: 10; -fx-border-color: #ddd;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <!-- Email Field -->
+        <Label style="-fx-font-size: 14px;" text="Email address" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField promptText="Enter your email" style="-fx-padding: 10; -fx-background-radius: 10; -fx-border-color: #ddd;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <!-- Password Field -->
+        <Label style="-fx-font-size: 14px;" text="Password" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <PasswordField promptText="Enter your password" style="-fx-padding: 10; -fx-background-radius: 10; -fx-border-color: #ddd;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <!-- Terms Checkbox -->
+        <CheckBox style="-fx-font-size: 12px; -fx-text-fill: #555;" text="I agree to the terms policy" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+
+        <!-- Sign-Up Button -->
+        <Button prefWidth="200.0" style="-fx-background-color: #c8a582; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10; -fx-padding: 10;" text="Sign Up" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+
+        <!-- Divider -->
+        <Separator orientation="HORIZONTAL" style="-fx-background-color: #ddd;" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+
+        <!-- Social Media Buttons -->
+        <Button prefWidth="140.0" style="-fx-background-color: #fff; -fx-font-size: 12px; -fx-text-fill: #333; -fx-border-color: #ccc;" text="Sign in with Google" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+        <Button prefWidth="140.0" style="-fx-background-color: #fff; -fx-font-size: 12px; -fx-text-fill: #333; -fx-border-color: #ccc;" text="Sign in with Apple" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
+        <!-- Redirect to Login -->
+        <Label style="-fx-font-size: 12px; -fx-text-fill: #555;" text="Have an account?" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+        <Hyperlink style="-fx-font-size: 12px; -fx-text-fill: #c8a582;" text="Sign In" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+
+</AnchorPane>
